@@ -1,62 +1,53 @@
-//-----------exercice1-----------------
+//----------------exercice3------------
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-void conj(char ch[]);
-
+#include<string.h>
+void remplace(char *ch[],char old ,char nov);
 void main()
 {
-    char verb[100];
-    char mot[100];
-   printf("donner une chaine:");
-   gets(verb);
-   conj(verb);
-   printf("donner un mot ");
-   gets(mot);
-}
-void conj(char VERB[])
+    int k,j;
+char ch[50];
+char old;
+char nov;
+printf("donner un chaine :");gets(ch);
+do
 {
-int j;
-char ch2[100];
- j=strlen(VERB);
- if ((VERB[j-2]!='e') || (VERB[j-1]!='r'))
-      puts("\aCe n'est pas un verbe du premier groupe.!");
- else
-     {
 
-      VERB[j-2]='\0';
+printf("donner un caractere exisitant dans la chaine:");
+scanf("%c",&old);
+j=0;k=0;
+while((k==0)&&(j!=strlen(ch)))
+      {
 
-      ch2[0]='\0';
-      strcat(ch2, "je ");
-      strcat(ch2, VERB);
-      strcat(ch2, "e");
-      puts(ch2);
-        ch2[0]='\0';
-      strcat(ch2, "tu ");
-      strcat(ch2, VERB);
-      strcat(ch2, "es");
-      puts(ch2);
-       ch2[0]='\0';
-      strcat(ch2, "il ");
-      strcat(ch2, VERB);
-      strcat(ch2, "e");
-      puts(ch2);
-       ch2[0]='\0';
-      strcat(ch2, "nous ");
-      strcat(ch2, VERB);
-      strcat(ch2, "ons");
-      puts(ch2);
-       ch2[0]='\0';
-      strcat(ch2, "vous ");
-      strcat(ch2, VERB);
-      strcat(ch2, "ez");
-      puts(ch2);
-      ch2[0]='\0';
-      strcat(ch2, "ils ");
-      strcat(ch2, VERB);
-      strcat(ch2, "ent");
-      puts(ch2);
-     }
+    if(ch[j]==old)
+        k++;
+        j++;
+      }
+}while(k==0);
+do{
+printf("donner un caractere non existant dans la chaine:");
+scanf("%c",&nov);
+j=0;k=0;
+while((k==0)&&(j!=strlen(ch)))
+      {
+    if(ch[j]==nov)
+        k++;
+        j++;
+      }
+}while(k==1);
+remplace(&ch,old,nov);
+puts(ch);
 }
+void remplace(char *ch[],char old,char nov)
+{
 
 
+int i;
+for(i=0;i<strlen(ch);i++)
+{
+
+
+    if(ch[i]==old)
+       ch[i]=nov;
+}
+}
